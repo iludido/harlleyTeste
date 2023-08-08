@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="./imgs/search.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css" rel="stylesheet" />
+    <meta charset='UTF-8'>
+    <title>Pesquisas</title>
+    <!-- <link rel='stylesheet' href='css/estilo.css'> -->
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+
+        @font-face {
+            font-family: 'Oswald';
+            src: url('./fonts/Oswald-Regular.ttf') format('truetype');
+        }
+
+        * {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background-color: #0D262D;
+            color: #fff;
+            height: 100%;
+        }
+
+        .conteudo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+        }
+
+        .select2-results__options > li {
+            background-color: transparent !important;
+            color: black !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+        }
+
+        .sla {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <h1>Faça sua pesquisa aqui.</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search" target="_blank">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl" required>
+            <option value="">Selecione um idioma</option>
+            <option value="de">Alemão</option>
+            <option value="zh-tw">Chinês Tradicional</option>
+            <option value="ko">Coreano</option>
+            <option value="es">Espanhol</option>
+            <option value="fr-ca">Francês (Canadá)</option>
+            <option value="fr">Francês</option>
+            <option value="en-us">Inglês (Americano)</option>
+            <option value="pt-br">Português (Brasil)</option>
+        </select>
+        <button wm-submit>Pesquisar</button>
+    </form>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('select').select2({ width: 252 });
+        });
+        
+        
+        
+        const submit = document.querySelector('[wm-submit]');
+        submit.onclick = function (e) {
+            const sel = document.getElementsByName('hl')
+            if (sel.value = "") {
+                e.preventDefault()
+            }
+            const form = e.target.parentNode;
+            const formData = new FormData(form);
+
+
+        }
+    </script>
+</body>
